@@ -1,10 +1,13 @@
 import { Analytics } from '@vercel/analytics/next'
+import { Montserrat } from 'next/font/google'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
+const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat' })
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'CrewServices | avio group.',
+  description: 'Internal airline crew management and operations platform for avio group.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -39,8 +42,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className="bg-background">
+      <body className={`${montserrat.variable} antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
