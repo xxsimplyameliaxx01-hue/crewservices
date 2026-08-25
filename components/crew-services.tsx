@@ -29,7 +29,7 @@ const pageCopy: Record<string, { kicker: string; title: string; description: str
 function EmptyPage({ page, onAction }: { page: string; onAction: () => void }) {
   const copy = pageCopy[page]
   const Icon = copy.icon
-  return <div className="page-body"><div className="welcome-row"><div><p className="date-line">{copy.kicker}</p><h2>{copy.title}</h2><p className="muted">{copy.description}</p></div>{page !== 'Flights' && <button className="primary-btn" onClick={onAction}><Plus size={16} /> {copy.action}</button>}</div><section className="empty-dashboard page-empty"><div className="empty-icon"><Icon size={24} /></div><h3>{page === 'Notifications' ? 'No new notifications' : `${copy.title} is ready`}</h3><p>{page === 'Flights' ? 'Add a flight to view its details and access the attendance register for that specific flight.' : `${copy.description} Start by adding your first record to get started.`}</p>{page !== 'Flights' && <button className="text-btn" onClick={onAction}>{copy.action}</button>}</section></div>
+  return <div className="page-body"><div className="welcome-row"><div><p className="date-line">{copy.kicker}</p><h2>{copy.title}</h2><p className="muted">{copy.description}</p></div>{page !== 'Flights' && <button className="primary-btn" onClick={onAction}><Plus size={16} /> {copy.action}</button>}</div><section className="empty-dashboard page-empty"><div className="empty-icon"><Icon size={24} /></div><h3>{page === 'Notifications' ? 'No new notifications' : `${copy.title} is ready`}</h3><p>{page === 'Flights' ? 'Add a flight to view its details and access the attendance register for that specific flight.' : `${copy.description} This page is available to you as Chairperson. Add your first record to get started.`}</p>{page !== 'Flights' && <button className="text-btn" onClick={onAction}>{copy.action}</button>}</section></div>
 }
 
 export default function CrewServices() {
@@ -38,12 +38,12 @@ export default function CrewServices() {
   const [notice, setNotice] = useState('')
 
   const choose = (label: string) => { setActive(label); setMobileOpen(false); setNotice('') }
-  const action = (label: string) => setNotice(`${label} will be available when your workspace data is connected.`)
+  const action = (label: string) => setNotice(`${label} is available to Ellis James as Chairperson. Add workspace data to begin.`)
 
   return <div className="crew-app">
     <aside className={`sidebar ${mobileOpen ? 'sidebar-open' : ''}`}>
       <div className="brand"><div className="brand-mark"><span /></div><div><b>avio group.</b><small>CrewServices</small></div></div>
-      <div className="workspace-label">WORKSPACE</div>
+      <div className="workspace-label">WORKSPACE · FULL ACCESS</div>
       <nav aria-label="Main navigation">{nav.map(({ label, icon: Icon }) => <button key={label} className={active === label ? 'nav-item active' : 'nav-item'} onClick={() => choose(label)}><Icon size={18} /><span>{label}</span></button>)}</nav>
       <div className="sidebar-bottom"><div className="support-card"><ShieldCheck size={18} /><div><b>CrewSafe status</b><span>Ready to connect</span></div><i /></div><button className="profile"><span className="avatar avatar-navy">EJ</span><span><b>Ellis James</b><small>Chairperson</small></span><MoreHorizontal size={18} /></button></div>
     </aside>
